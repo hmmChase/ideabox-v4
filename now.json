@@ -10,6 +10,11 @@
     { "src": "/(.*)", "dest": "frontend/$1" }
   ],
   "env": {
-    "PRISMA_SECRET": "@prisma_secret"
+    "JWT_SECRET": "@jwt_secret",
+    "PRISMA_SECRET": "@prisma_secret",
+    "MAIL_HOST": "@mail_host",
+    "MAIL_PORT": "@mail_port",
+    "MAIL_USER": "@mail_user",
+    "MAIL_PASS": "@mail_pass"
   }
 }
