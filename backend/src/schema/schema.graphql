@@ -1,0 +1,31 @@
+# import * from './schema_prep.graphql'
+
+type Query {
+  user(id: ID!): User
+  users: [User]!
+  me: User
+}
+
+type Mutation {
+  signUp(email: String!, password: String!, confirmPassword: String!): User!
+  signIn(email: String!, password: String!): User!
+  signOut: Boolean!
+  requestReset(email: String!): Boolean!
+  resetPassword(
+    resetToken: String!
+    password: String!
+    confirmPassword: String!
+  ): User!
+  me: User
+  # refreshAccessToken(refreshToken: String!): Token!
+}
+
+type User {
+  id: ID!
+  email: String!
+}
+
+# type Token {
+#   token: String!
+#   refreshToken: String!
+# }
