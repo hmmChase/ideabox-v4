@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import apolloServer from './apolloServer';
 
@@ -8,7 +9,17 @@ const server = apolloServer();
 
 app.use(cookieParser());
 
-server.applyMiddleware({ app, path: '/graphql' });
+const corsOptions = {
+  credentials: true,
+  origin:
+    process.env.NODE_ENV === 'production'
+      ? 'https://ideabox-v4.hmmchase.now.sh'
+      : 'http://localhost:7777'
+};
+
+app.use(cors(corsOptions));
+
+server.applyMiddleware({ app, path: '/graphql', cors: corsOptions });
 
 app.listen({ port: 8888 }, err => {
   if (err) throw err;
