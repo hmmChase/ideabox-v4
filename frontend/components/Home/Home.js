@@ -1,5 +1,5 @@
-import * as sc from './Home.style';
+import IdeaContainer from '../IdeaContainer/IdeaContainer';
 
-const Home = React.memo(() => <sc.p>Home</sc.p>);
+const Home = React.memo(() => <IdeaContainer />);
 
 export default Home;

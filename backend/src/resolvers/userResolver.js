@@ -24,18 +24,6 @@ export default {
   },
 
   Mutation: {
-    // refreshAccessToken: async (parent, args, ctx, info) => {
-    //   // Get new access token
-    //   const { newAccessToken, newRefreshToken } = await refreshAccessToken(
-    //     args.refreshToken,
-    //     ctx.prisma,
-    //     process.env.JWT_SECRET
-    //   );
-
-    //   // Return new tokens
-    //   return { token: newAccessToken, refreshToken: newRefreshToken };
-    // },
-
     signUp: async (parent, args, ctx, info) => {
       const email = args.email.toLowerCase();
 

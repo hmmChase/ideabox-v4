@@ -4,6 +4,8 @@ type Query {
   user(id: ID!): User
   users: [User]!
   me: User
+  idea(id: ID!): Idea
+  ideas: [Idea]!
 }
 
 type Mutation {
@@ -17,15 +19,12 @@ type Mutation {
     confirmPassword: String!
   ): User!
   me: User
-  # refreshAccessToken(refreshToken: String!): Token!
+  createIdea(idea: String!): Idea!
+  updateIdea(id: ID!, idea: String!): Idea
+  deleteIdea(id: ID!): Idea
 }
 
 type User {
   id: ID!
   email: String!
 }
-
-# type Token {
-#   token: String!
-#   refreshToken: String!
-# }

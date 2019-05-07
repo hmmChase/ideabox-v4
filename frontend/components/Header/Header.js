@@ -1,16 +1,12 @@
-import PropTypes from 'prop-types';
+import IdeaCardForm from '../IdeaCardForm/IdeaCardForm';
 import * as sc from './Header.style';
 
-const Header = React.memo(props => (
+const Header = React.memo(() => (
   <sc.header>
     <sc.h1>ideabox</sc.h1>
 
-    {props.children}
+    <IdeaCardForm />
   </sc.header>
 ));
-
-Header.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 export default Header;

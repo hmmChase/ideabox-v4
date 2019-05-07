@@ -7,3 +7,10 @@ type User @db(name: "user") {
   resetToken: String
   resetTokenExpiry: Float
 }
+
+type Idea @db(name: "idea") {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  idea: String!
+}
