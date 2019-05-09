@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const form = styled.form`
   display: flex;
-  width: 80%;
-  max-width: 800px;
+  width: 100%;
   position: relative;
 
   > img {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const linkBtn = styled.a`
+  display: inline-block;
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
   font-size: 1em;
