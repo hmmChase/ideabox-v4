@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const linkBtn = styled.a`
   display: inline-block;
-  text-decoration: none;
-  text-shadow: 1px 1px 0 #fff;
+  /* text-decoration: none; */
+  text-shadow: 1px 1px 0 #000;
   font-size: 1em;
   font-weight: 600;
   padding: 0.25em 1em;
@@ -11,9 +11,10 @@ export const linkBtn = styled.a`
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.2s ease-out;
+  white-space: nowrap;
 
   &:hover {
-    background-color: #eee;
+    background-color: #aaa;
   }
 
   &:active {
@@ -22,15 +23,18 @@ export const linkBtn = styled.a`
 `;
 
 export const purpleLinkBtn = styled(linkBtn)`
-  color: ${props => props.theme.color.purple};
+  color: white;
+  border-color: ${props => props.theme.color.purple};
 `;
 
 export const orangeLinkBtn = styled(linkBtn)`
-  color: ${props => props.theme.color.orange};
+  color: white;
+  border-color: ${props => props.theme.color.orange};
 `;
 
 export const redLinkBtn = styled(linkBtn)`
-  color: ${props => props.theme.color.red};
+  color: white;
+  border-color: ${props => props.theme.color.red};
 `;
 
 export const inputBtn = styled.input`
@@ -44,6 +48,7 @@ export const inputBtn = styled.input`
   cursor: pointer;
   transition: all 0.2s ease-out;
   background: none;
+  white-space: nowrap;
 
   &:hover {
     background-color: #eee;

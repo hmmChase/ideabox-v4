@@ -6,11 +6,8 @@ const Layout = React.memo(props => (
   <sc.divLayout>
     <Header />
 
-    <sc.main>
-      {/* Pages are rendered here */}
-
-      {props.children}
-    </sc.main>
+    {/* Pages are rendered here */}
+    {props.children}
   </sc.divLayout>
 ));
 

@@ -5,6 +5,7 @@ export default {
     red: '#F00',
     orange: 'tomato',
     green: 'limeGreen',
-    purple: 'blueviolet'
+    purple: 'blueviolet',
+    yellow: 'yellow'
   }
 };
