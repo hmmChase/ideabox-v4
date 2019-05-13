@@ -5,16 +5,20 @@ export const linkBtn = styled.a`
   text-shadow: 1px 1px 0 #000;
   font-size: 1rem;
   font-weight: 600;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem;
   border: 2px solid;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
   white-space: nowrap;
   color: white;
 
   &:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) inset;
+  }
+
+  @media screen and (min-width: 600px) {
+    padding: 0.3rem 0.6rem;
   }
 `;
 
@@ -43,7 +47,7 @@ export const inputBtn = styled.input`
   border: 2px solid;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
   background: none;
   white-space: nowrap;
 

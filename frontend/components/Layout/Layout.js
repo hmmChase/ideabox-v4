@@ -4,7 +4,9 @@ import * as sc from './Layout.style';
 
 const Layout = React.memo(props => (
   <sc.divLayout>
+    <sc.headerMarginLeft />
     <Header />
+    <sc.headerMarginRight />
 
     {/* Pages are rendered here */}
     {props.children}

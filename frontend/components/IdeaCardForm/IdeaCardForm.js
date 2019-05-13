@@ -2,7 +2,7 @@ import { Mutation } from 'react-apollo';
 import * as query from './IdeaCardForm.query';
 import * as sc from './IdeaCardForm.style';
 
-class IdeaCardForm extends React.Component {
+class IdeaCardForm extends React.PureComponent {
   state = {
     idea: '',
     isSubmitDisabled: true

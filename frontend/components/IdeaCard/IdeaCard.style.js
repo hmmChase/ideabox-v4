@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const li = styled.li`
   display: flex;
   position: relative;
-  /* width: 80%; */
   margin: 20px;
 `;
 
@@ -21,13 +20,11 @@ export const deleteBtn = styled.button`
 `;
 
 export const ideaP = styled.p`
-  /* text-align: left; */
   width: 100%;
   outline: none;
   border: black solid 1px;
   padding: 5px;
   margin: 0;
-  /* max-width: 1fr; */
   overflow-wrap: break-word;
   word-break: break-all;
 `;

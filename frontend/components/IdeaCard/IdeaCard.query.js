@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer.query';
+import { ALL_IDEAS_QUERY } from '../IdeaCardContainer/IdeaCardContainer.query';
 
 export { ALL_IDEAS_QUERY };
 
