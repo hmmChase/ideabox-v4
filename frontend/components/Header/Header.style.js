@@ -2,18 +2,18 @@ import styled from 'styled-components';
 
 // export const headerLeft = styled.div`
 //   /* grid-area: header-left; */
-//   background-color: #282c34;
+//   background-color: ${props => props.theme.color.black};
 // `;
 
 // export const headerRight = styled.div`
 //   /* grid-area: header-right; */
-//   background-color: #282c34;
+//   background-color: ${props => props.theme.color.black};
 // `;
 
 export const header = styled.header`
   grid-area: header;
   display: grid;
-  background-color: #282c34;
+  background-color: ${props => props.theme.color.black};
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'header-left header-right';
   place-items: center center;
@@ -30,11 +30,10 @@ export const header = styled.header`
 `;
 
 export const h1 = styled.h1`
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: 'Play', sans-serif;
-  /* color: ${props => props.theme.yellow}; */
-  color: #ACE;
-  margin: 0 5px 0 80px;
+  color: ${props => props.theme.color.yellow};
+  margin: 0 5px 0 70px;
   justify-self: start;
   /* grid-area: header; */
 

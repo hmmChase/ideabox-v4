@@ -10,7 +10,7 @@ export const signOn = styled.div`
   justify-self: end;
   /* grid-area: page; */
   grid-area: header-right;
-  grid-column: 2 / 3;
+  /* grid-column: 2 / 3; */
 
   @media (min-width: 900px) {
     /* grid-area: middle; */

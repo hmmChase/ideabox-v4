@@ -2,51 +2,48 @@ import styled from 'styled-components';
 
 export const linkBtn = styled.a`
   display: inline-block;
-  /* text-decoration: none; */
   text-shadow: 1px 1px 0 #000;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.25em 1em;
+  padding: 0.3rem 1rem;
   border: 2px solid;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.3s ease-out;
   white-space: nowrap;
-
-  &:hover {
-    background-color: #aaa;
-  }
+  color: white;
 
   &:active {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) inset;
   }
 `;
 
 export const purpleLinkBtn = styled(linkBtn)`
-  color: white;
   border-color: ${props => props.theme.color.purple};
+
+  &:hover {
+    background-color: ${props => props.theme.color.purple};
+  }
 `;
 
 export const orangeLinkBtn = styled(linkBtn)`
-  color: white;
   border-color: ${props => props.theme.color.orange};
-`;
 
-export const redLinkBtn = styled(linkBtn)`
-  color: white;
-  border-color: ${props => props.theme.color.red};
+  &:hover {
+    background-color: ${props => props.theme.color.orange};
+  }
 `;
 
 export const inputBtn = styled.input`
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.25em 1em;
+  padding: 0.3rem 1rem;
   border: 2px solid;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.3s ease-out;
   background: none;
   white-space: nowrap;
 
