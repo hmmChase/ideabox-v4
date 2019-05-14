@@ -4,7 +4,7 @@ import * as sc from './Header.style';
 
 const Header = React.memo(() => (
   <sc.header>
-    <sc.h1>ideabox</sc.h1>
+    <sc.h1>IdeaBox</sc.h1>
     <SignOn />
     <IdeaCardForm />
   </sc.header>

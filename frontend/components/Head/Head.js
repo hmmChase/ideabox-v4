@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Head = React.memo(props => (
   <NextHead>
-    <title>{`ideabox-v4 | ${props.title}`}</title>
+    <title>{props.title ? `ideabox-v4 | ${props.title}` : 'ideabox-v4'}</title>
   </NextHead>
 ));
 

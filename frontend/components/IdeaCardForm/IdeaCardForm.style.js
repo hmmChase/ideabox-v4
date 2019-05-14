@@ -14,10 +14,9 @@ export const form = styled.form`
   }
 
   > textarea {
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     outline: none;
-    height: 100%;
-    min-height: 58px;
+    min-height: 56px;
     width: 100%;
     resize: vertical;
     border: none;
@@ -25,12 +24,18 @@ export const form = styled.form`
   }
 
   > button {
-    width: 60px;
     border: none;
-    background-color: #fffacd;
+    outline: none;
+    cursor: pointer;
+    background-color: ${props => props.theme.color.yellow_light};
+    padding: 0;
+
+    &:active {
+      background-color: ${props => props.theme.color.yellow_bright};
+    }
   }
 
-  @media (min-width: 600px) {
+  @media screen and (min-width: 600px) {
     > img {
       left: 0;
     }

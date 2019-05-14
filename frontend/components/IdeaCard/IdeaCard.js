@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo';
 import * as query from './IdeaCard.query';
 import * as sc from './IdeaCard.style';
 
-class IdeaCard extends React.Component {
+class IdeaCard extends React.PureComponent {
   state = {
     prevIdea: this.props.idea,
     nextIdea: this.props.idea
@@ -18,6 +18,8 @@ class IdeaCard extends React.Component {
     deleteIdea();
   };
 
+  handleError = error => error;
+
   render() {
     return (
       <sc.li>
@@ -25,6 +27,8 @@ class IdeaCard extends React.Component {
           mutation={query.DELETE_IDEA_MUTATION}
           variables={{ id: this.props.id }}
           refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+          onError={this.handleError}
+          errorPolicy="all"
         >
           {deleteIdea => (
             <sc.deleteBtn
@@ -41,6 +45,8 @@ class IdeaCard extends React.Component {
             idea: this.state.nextIdea
           }}
           refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+          onError={this.handleError}
+          errorPolicy="all"
         >
           {updateIdea => (
             <sc.ideaP

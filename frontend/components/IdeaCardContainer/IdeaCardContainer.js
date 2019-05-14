@@ -1,30 +1,30 @@
 import { Query } from 'react-apollo';
 import IdeaCard from '../IdeaCard/IdeaCard';
+import DisplayError from '../DisplayError/DisplayError';
+import DisplayLoading from '../DisplayLoading/DisplayLoading';
 import * as query from './IdeaCardContainer.query';
 import * as sc from './IdeaCardContainer.style';
 
-class IdeaContainer extends React.PureComponent {
-  displayIdeaCards = data =>
+const IdeaContainer = React.memo(() => {
+  const displayIdeaCards = data =>
     data.ideas.map(idea => <IdeaCard key={`ideaCard${idea.id}`} {...idea} />);
 
-  handleError = error => error;
+  const handleError = error => error;
 
-  render() {
-    return (
-      <Query
-        query={query.ALL_IDEAS_QUERY}
-        onError={this.handleError}
-        errorPolicy="all"
-      >
-        {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}</p>;
+  return (
+    <Query
+      query={query.ALL_IDEAS_QUERY}
+      onError={handleError}
+      errorPolicy="all"
+    >
+      {({ loading, error, data }) => {
+        if (loading) return <DisplayLoading />;
+        if (error) return <DisplayError error={error} />;
 
-          return <sc.ul>{this.displayIdeaCards(data)}</sc.ul>;
-        }}
-      </Query>
-    );
-  }
-}
+        return <sc.ul>{displayIdeaCards(data)}</sc.ul>;
+      }}
+    </Query>
+  );
+});
 
 export default IdeaContainer;

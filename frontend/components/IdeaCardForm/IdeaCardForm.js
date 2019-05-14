@@ -18,15 +18,17 @@ class IdeaCardForm extends React.PureComponent {
 
   handleChangeIdeaInput = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value }, () => this.canSubmit());
+    this.setState({ [name]: value }, this.canSubmit);
   };
 
   handleSubmitIdeaForm = async (event, createIdea) => {
     event.preventDefault();
     this.setState({ isSubmitDisabled: true });
     createIdea();
-    this.setState({ idea: '' }, () => this.canSubmit());
+    this.setState({ idea: '' }, this.canSubmit);
   };
+
+  handleError = error => error;
 
   render() {
     return (
@@ -34,12 +36,16 @@ class IdeaCardForm extends React.PureComponent {
         mutation={query.CREATE_IDEA_MUTATION}
         variables={{ idea: this.state.idea }}
         refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+        onError={this.handleError}
+        errorPolicy="all"
+        onCompleted={this.handleCompleted}
       >
         {createIdea => (
           <sc.form
             onSubmit={event => this.handleSubmitIdeaForm(event, createIdea)}
           >
             <img src="static/ideabox.png" alt="ideabox" />
+
             <textarea
               name="idea"
               type="text"
@@ -47,6 +53,7 @@ class IdeaCardForm extends React.PureComponent {
               value={this.state.idea}
               onChange={event => this.handleChangeIdeaInput(event)}
             />
+
             <button type="submit" disabled={this.state.isSubmitDisabled}>
               Add Idea
             </button>

@@ -15,8 +15,15 @@ export const deleteBtn = styled.button`
   height: 20px;
   width: 20px;
   border: none;
+  outline: none;
   cursor: pointer;
-  border-radius: 50%;
+
+  &:active {
+    right: -8px;
+    top: -8px;
+    height: 17px;
+    width: 17px;
+  }
 `;
 
 export const ideaP = styled.p`

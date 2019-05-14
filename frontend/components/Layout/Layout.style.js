@@ -8,7 +8,7 @@ export const divLayout = styled.div`
     'header'
     'main';
 
-  @media (min-width: 900px) {
+  @media screen and (min-width: 900px) {
     grid-template-columns: 1fr 900px 1fr;
     grid-template-areas:
       'header-margin-left header header-margin-right'
