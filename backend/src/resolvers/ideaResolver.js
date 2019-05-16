@@ -1,27 +1,44 @@
+import * as auth from '../utils/auth';
+
 export default {
   Query: {
-    idea: (parent, args, ctx, info) => {
-      return ctx.prisma.query.idea({ where: { id: args.id } });
+    idea: async (parent, args, ctx, info) => {
+      await auth.isAuthenticated(ctx.me);
+
+      return await ctx.prisma.query.idea({ where: { id: args.id } });
     },
 
-    ideas: (parent, args, ctx, info) => {
-      return ctx.prisma.query.ideas();
+    ideas: async (parent, args, ctx, info) => {
+      await auth.isAuthenticated(ctx.me);
+
+      return await ctx.prisma.query.ideas();
     }
   },
 
   Mutation: {
     createIdea: async (parent, args, ctx, info) => {
+      await auth.isAuthenticated(ctx.me);
+
       return await ctx.prisma.mutation.createIdea({
-        data: { idea: args.idea }
+        data: {
+          content: args.content,
+          author: { connect: { id: ctx.me.user.id } }
+        }
       });
     },
+
     updateIdea: async (parent, args, ctx, info) => {
+      await auth.isAuthenticated(ctx.me);
+
       return await ctx.prisma.mutation.updateIdea({
-        data: { idea: args.idea },
-        where: { id: args.id }
+        where: { id: args.id },
+        data: { content: args.content }
       });
     },
+
     deleteIdea: async (parent, args, ctx, info) => {
+      await auth.isAuthenticated(ctx.me);
+
       return await ctx.prisma.mutation.deleteIdea({
         where: { id: args.id }
       });

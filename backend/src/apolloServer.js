@@ -15,6 +15,7 @@ export default () =>
 
       return { req, res, prisma, me };
     },
+    introspection: true,
     playground:
       process.env.NODE_ENV !== 'production'
         ? {

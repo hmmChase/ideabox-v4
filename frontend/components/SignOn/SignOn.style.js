@@ -5,14 +5,15 @@ export const signOn = styled.div`
   white-space: nowrap;
   justify-self: end;
   grid-area: header-right;
+  margin-right: 10px;
+
+  @media screen and (min-width: 600px) {
+    margin-right: 0;
+  }
 `;
 
 export const purpleBtn = styled(purpleLinkBtn)``;
 
 export const orangeBtn = styled(orangeLinkBtn)`
-  margin: 0 10px;
-
-  @media screen and (min-width: 600px) {
-    margin-right: 0;
-  }
+  margin-left: 10px;
 `;

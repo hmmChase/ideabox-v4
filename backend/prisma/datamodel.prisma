@@ -1,9 +1,24 @@
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Permission {
+  PERMISSIONUPDATE
+  IDEACREATE
+  IDEAUPDATE
+  IDEADELETE
+}
+
 type User @db(name: "user") {
   id: ID! @id
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   email: String! @unique
   password: String!
+  roles: [Role!]! @default(value: USER) @scalarList(strategy: RELATION)
+  permissions: [Permission] @scalarList(strategy: RELATION)
+  ideas: [Idea!]
   resetToken: String
   resetTokenExpiry: Float
 }
@@ -12,5 +27,6 @@ type Idea @db(name: "idea") {
   id: ID! @id
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  idea: String!
+  content: String!
+  author: User! @relation(link: INLINE)
 }

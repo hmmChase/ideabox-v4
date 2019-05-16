@@ -5,12 +5,12 @@ import * as sc from './IdeaCard.style';
 
 class IdeaCard extends React.PureComponent {
   state = {
-    prevIdea: this.props.idea,
-    nextIdea: this.props.idea
+    prevContent: this.props.content,
+    nextContent: this.props.content
   };
 
   handleInputIdeaCard = (e, updateIdea) => {
-    this.setState({ nextIdea: e.target.innerText }, updateIdea);
+    this.setState({ nextContent: e.target.innerText }, updateIdea);
   };
 
   handleClickDeleteBtn = (e, deleteIdea) => {
@@ -42,7 +42,7 @@ class IdeaCard extends React.PureComponent {
           mutation={query.UPDATE_IDEA_MUTATION}
           variables={{
             id: this.props.id,
-            idea: this.state.nextIdea
+            content: this.state.nextContent
           }}
           refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
           onError={this.handleError}
@@ -54,7 +54,7 @@ class IdeaCard extends React.PureComponent {
               suppressContentEditableWarning
               onInput={e => this.handleInputIdeaCard(e, updateIdea)}
             >
-              {this.state.prevIdea}
+              {this.state.prevContent}
             </sc.ideaP>
           )}
         </Mutation>
@@ -65,7 +65,7 @@ class IdeaCard extends React.PureComponent {
 
 IdeaCard.propTypes = {
   id: PropTypes.string.isRequired,
-  idea: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired
 };
 
 export default IdeaCard;

@@ -4,8 +4,8 @@ import { ALL_IDEAS_QUERY } from '../IdeaCardContainer/IdeaCardContainer.query';
 export { ALL_IDEAS_QUERY };
 
 export const CREATE_IDEA_MUTATION = gql`
-  mutation CREATE_IDEA_MUTATION($idea: String!) {
-    createIdea(idea: $idea) {
+  mutation CREATE_IDEA_MUTATION($content: String!) {
+    createIdea(content: $content) {
       id
     }
   }

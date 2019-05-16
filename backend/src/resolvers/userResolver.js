@@ -11,8 +11,6 @@ export default {
     },
 
     users: async (parent, args, ctx, info) => {
-      await auth.isAuthenticated(ctx.me);
-
       return await ctx.prisma.query.users();
     },
 
@@ -42,7 +40,7 @@ export default {
       const password = await bcrypt.hash(args.password, config.saltRounds);
 
       const user = await ctx.prisma.mutation.createUser({
-        data: { email, password }
+        data: { email, password, roles: { set: ['USER'] } }
       });
 
       const payload = { user: { id: user.id } };
@@ -129,6 +127,17 @@ export default {
       await auth.sendCookie(ctx.res, payload);
 
       return updatedUser;
+    }
+  },
+
+  // Further resolvers to resolve the connections on a per-field level
+  // The root (parent) resolver that ran, passes its data to any per-field resolvers
+
+  User: {
+    ideas: async (parent, args, ctx, info) => {
+      console.log('parent: ', parent.id);
+
+      return await ctx.prisma.query.user({ where: { id: parent.id } }).ideas();
     }
   }
 };

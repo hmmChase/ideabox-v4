@@ -19,12 +19,13 @@ type Mutation {
     confirmPassword: String!
   ): User!
   me: User
-  createIdea(idea: String!): Idea!
-  updateIdea(id: ID!, idea: String!): Idea
+  createIdea(content: String!): Idea!
+  updateIdea(id: ID!, content: String!): Idea
   deleteIdea(id: ID!): Idea
 }
 
 type User {
   id: ID!
   email: String!
+  ideas: [Idea!]
 }
