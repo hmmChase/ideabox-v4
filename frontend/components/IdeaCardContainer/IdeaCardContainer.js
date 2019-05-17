@@ -16,11 +16,12 @@ const IdeaContainer = React.memo(() => {
   return (
     <Query query={query.ME_IDEAS_QUERY} onError={handleError} errorPolicy="all">
       {({ loading, error, data }) => {
-        if (loading) return <DisplayLoading />;
         if (error) return <DisplayError error={error} />;
 
         return (
           <sc.IdeaContainer>
+            {loading && <DisplayLoading />}
+
             {data.getUserIdeas.length ? (
               <sc.ul>{displayIdeaCards(data)}</sc.ul>
             ) : (
