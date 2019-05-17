@@ -3,15 +3,21 @@ import * as auth from '../utils/auth';
 export default {
   Query: {
     idea: async (parent, args, ctx, info) => {
-      await auth.isAuthenticated(ctx.me);
+      // await auth.isAuthenticated(ctx.me);
 
-      return await ctx.prisma.query.idea({ where: { id: args.id } });
+      return ctx.prisma.query.idea({ where: { id: args.id } });
     },
 
     ideas: async (parent, args, ctx, info) => {
-      await auth.isAuthenticated(ctx.me);
+      // await auth.isAuthenticated(ctx.me);
 
-      return await ctx.prisma.query.ideas();
+      return ctx.prisma.query.ideas();
+    },
+
+    getUserIdeas(parent, args, ctx, info) {
+      return ctx.prisma.query.ideas({
+        where: { author: { id: ctx.me.user.id } }
+      });
     }
   },
 
@@ -19,10 +25,10 @@ export default {
     createIdea: async (parent, args, ctx, info) => {
       await auth.isAuthenticated(ctx.me);
 
-      return await ctx.prisma.mutation.createIdea({
+      return ctx.prisma.mutation.createIdea({
         data: {
-          content: args.content,
-          author: { connect: { id: ctx.me.user.id } }
+          author: { connect: { id: ctx.me.user.id } },
+          content: args.content
         }
       });
     },
@@ -30,7 +36,7 @@ export default {
     updateIdea: async (parent, args, ctx, info) => {
       await auth.isAuthenticated(ctx.me);
 
-      return await ctx.prisma.mutation.updateIdea({
+      return ctx.prisma.mutation.updateIdea({
         where: { id: args.id },
         data: { content: args.content }
       });
@@ -39,9 +45,20 @@ export default {
     deleteIdea: async (parent, args, ctx, info) => {
       await auth.isAuthenticated(ctx.me);
 
-      return await ctx.prisma.mutation.deleteIdea({
+      return ctx.prisma.mutation.deleteIdea({
         where: { id: args.id }
       });
+    }
+  },
+
+  // Further resolvers to resolve the connections on a per-field level
+  // The root (parent) resolver that ran, passes its data to any per-field resolvers
+
+  Idea: {
+    author: (parent, args, ctx, info) => {
+      console.log('author parent: ', parent);
+
+      return ctx.prisma.query.idea({ where: { id: parent.id } }).author();
     }
   }
 };

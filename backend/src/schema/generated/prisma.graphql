@@ -16,8 +16,8 @@ type Idea {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  content: String!
   author: User!
+  content: String!
 }
 
 type IdeaConnection {
@@ -28,8 +28,8 @@ type IdeaConnection {
 
 input IdeaCreateInput {
   id: ID
-  content: String!
   author: UserCreateOneWithoutIdeasInput!
+  content: String!
 }
 
 input IdeaCreateManyWithoutAuthorInput {
@@ -134,8 +134,8 @@ input IdeaSubscriptionWhereInput {
 }
 
 input IdeaUpdateInput {
-  content: String
   author: UserUpdateOneRequiredWithoutIdeasInput
+  content: String
 }
 
 input IdeaUpdateManyDataInput {
@@ -209,6 +209,7 @@ input IdeaWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  author: UserWhereInput
   content: String
   content_not: String
   content_in: [String!]
@@ -223,7 +224,6 @@ input IdeaWhereInput {
   content_not_starts_with: String
   content_ends_with: String
   content_not_ends_with: String
-  author: UserWhereInput
   AND: [IdeaWhereInput!]
   OR: [IdeaWhereInput!]
   NOT: [IdeaWhereInput!]
