@@ -35,7 +35,7 @@ class IdeaCardForm extends React.PureComponent {
       <Mutation
         mutation={query.CREATE_IDEA_MUTATION}
         variables={{ content: this.state.idea }}
-        refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+        refetchQueries={[{ query: query.ME_IDEAS_QUERY }]}
         onError={this.handleError}
         errorPolicy="all"
       >

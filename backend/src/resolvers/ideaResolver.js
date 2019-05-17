@@ -5,7 +5,7 @@ export default {
     idea: async (parent, args, ctx, info) => {
       // await auth.isAuthenticated(ctx.me);
 
-      return ctx.prisma.query.idea({ where: { id: args.id } });
+      return ctx.prisma.query.idea({ where: { id: args.id } }, info);
     },
 
     ideas: async (parent, args, ctx, info) => {
@@ -56,9 +56,11 @@ export default {
 
   Idea: {
     author: (parent, args, ctx, info) => {
-      console.log('author parent: ', parent);
+      console.log('idea parent: ', parent);
 
-      return ctx.prisma.query.idea({ where: { id: parent.id } }).author();
+      // return ctx.prisma.query.idea({ where: { id: parent.id } }).author();
+
+      return ctx.prisma.query.user({ where: { id: parent.author.id } });
     }
   }
 };

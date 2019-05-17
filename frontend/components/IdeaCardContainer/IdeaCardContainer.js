@@ -7,21 +7,27 @@ import * as sc from './IdeaCardContainer.style';
 
 const IdeaContainer = React.memo(() => {
   const displayIdeaCards = data =>
-    data.ideas.map(idea => <IdeaCard key={`ideaCard${idea.id}`} {...idea} />);
+    data.getUserIdeas.map(idea => (
+      <IdeaCard key={`ideaCard${idea.id}`} {...idea} />
+    ));
 
   const handleError = error => error;
 
   return (
-    <Query
-      query={query.ALL_IDEAS_QUERY}
-      onError={handleError}
-      errorPolicy="all"
-    >
+    <Query query={query.ME_IDEAS_QUERY} onError={handleError} errorPolicy="all">
       {({ loading, error, data }) => {
         if (loading) return <DisplayLoading />;
         if (error) return <DisplayError error={error} />;
 
-        return <sc.ul>{displayIdeaCards(data)}</sc.ul>;
+        return (
+          <sc.IdeaContainer>
+            {data.getUserIdeas.length ? (
+              <sc.ul>{displayIdeaCards(data)}</sc.ul>
+            ) : (
+              <p>Think of something!</p>
+            )}
+          </sc.IdeaContainer>
+        );
       }}
     </Query>
   );

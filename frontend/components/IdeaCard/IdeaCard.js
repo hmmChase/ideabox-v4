@@ -26,7 +26,7 @@ class IdeaCard extends React.PureComponent {
         <Mutation
           mutation={query.DELETE_IDEA_MUTATION}
           variables={{ id: this.props.id }}
-          refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+          refetchQueries={[{ query: query.ME_IDEAS_QUERY }]}
           onError={this.handleError}
           errorPolicy="all"
         >
@@ -44,7 +44,7 @@ class IdeaCard extends React.PureComponent {
             id: this.props.id,
             content: this.state.nextContent
           }}
-          refetchQueries={[{ query: query.ALL_IDEAS_QUERY }]}
+          refetchQueries={[{ query: query.ME_IDEAS_QUERY }]}
           onError={this.handleError}
           errorPolicy="all"
         >

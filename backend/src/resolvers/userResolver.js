@@ -13,7 +13,7 @@ export default {
     },
 
     user: (parent, args, ctx, info) => {
-      return ctx.prisma.query.user({ where: { id: args.id } });
+      return ctx.prisma.query.user({ where: { id: args.id } }, info);
     },
 
     users: (parent, args, ctx, info) => {
@@ -135,9 +135,13 @@ export default {
 
   User: {
     ideas: (parent, args, ctx, info) => {
-      console.log('ideas parent: ', parent);
+      console.log('user parent: ', parent);
 
-      return ctx.prisma.query.user({ where: { id: parent.id } }).ideas();
+      // return ctx.prisma.query.user({ where: { id: parent.id } }).ideas();
+
+      return ctx.prisma.query.ideas({
+        where: { author: { id: parent.ideas.id } }
+      });
     }
   }
 };

@@ -17,3 +17,12 @@ export const USER_IDEAS_QUERY = gql`
     }
   }
 `;
+
+export const ME_IDEAS_QUERY = gql`
+  query ME_IDEAS_QUERY {
+    getUserIdeas {
+      id
+      content
+    }
+  }
+`;

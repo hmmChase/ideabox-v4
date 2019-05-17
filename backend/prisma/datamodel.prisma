@@ -18,7 +18,7 @@ type User @db(name: "user") {
   password: String!
   roles: [Role!]! @default(value: USER) @scalarList(strategy: RELATION)
   permissions: [Permission] @scalarList(strategy: RELATION)
-  ideas: [Idea!]!
+  ideas: [Idea!]! @relation(name: "IdeaAuthor")
   resetToken: String
   resetTokenExpiry: Float
 }
@@ -27,6 +27,6 @@ type Idea @db(name: "idea") {
   id: ID! @id
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  author: User! @relation(link: INLINE)
+  author: User! @relation(name: "IdeaAuthor", link: INLINE)
   content: String!
 }

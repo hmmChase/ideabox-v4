@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
-import { ALL_IDEAS_QUERY } from '../IdeaCardContainer/IdeaCardContainer.query';
+import { ME_IDEAS_QUERY } from '../IdeaCardContainer/IdeaCardContainer.query';
 
-export { ALL_IDEAS_QUERY };
+export { ME_IDEAS_QUERY };
 
 export const UPDATE_IDEA_MUTATION = gql`
   mutation UPDATE_IDEA_MUTATION($id: ID!, $content: String!) {
