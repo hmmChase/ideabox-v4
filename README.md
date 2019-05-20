@@ -1,4 +1,4 @@
-# ideabox-next-graphql
+# ideabox-v4
 
 IdeaBox is a simple CRUD (Create, Read, Update, Delete) app
 
