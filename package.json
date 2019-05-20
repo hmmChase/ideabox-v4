@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hmmChase/ideabox-next-graphql.git"
+    "url": "git+https://github.com/hmmChase/ideabox-v4.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hmmChase/ideabox-next-graphql/issues"
+    "url": "https://github.com/hmmChase/ideabox-v4/issues"
   },
-  "homepage": "https://github.com/hmmChase/ideabox-next-graphql#readme",
+  "homepage": "https://github.com/hmmChase/ideabox-v4#readme",
   "devDependencies": {
     "concurrently": "^4.1.0"
   }

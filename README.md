@@ -19,3 +19,5 @@ IdeaBox is a simple CRUD (Create, Read, Update, Delete) app
 
 - Frontend: Jest/Enzyme
 - Backend: Mocha/Chai
+
+> Bootstrapped with [next-graphql-starter](https://github.com/hmmChase/next-graphql-starter)
